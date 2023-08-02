@@ -4,7 +4,7 @@ const Address = require('./cards/Address');
 const {
 	URL,
 	DEFAULT_STRING_SCHEMA_REQUIRED,
-} = require('./cards/helpers/mongooseValidation');
+} = require('../validation/mongoose/mongoose.validation');
 
 const cardSchema = new mongoose.Schema({
 	title: DEFAULT_STRING_SCHEMA_REQUIRED,

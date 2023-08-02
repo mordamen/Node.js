@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const handleError = require('../utilities/errorHandler');
 const cardController = require('../controllers/cards.controller');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/auth.middleware');
 
 // GET ALL CARDS
 // ROUTE: /cards | METHOD: GET | AUTHORIZATION: All | RETURN: All Cards

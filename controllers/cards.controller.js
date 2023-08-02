@@ -1,4 +1,4 @@
-const cardsService = require('../models/services/cards.service');
+const cardsService = require('../services/cards.service');
 // GET ALL CARDS
 const getAllCards = async (req, res) => {
 	try {

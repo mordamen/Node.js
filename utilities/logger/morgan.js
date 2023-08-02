@@ -28,11 +28,17 @@ const logger = morgan((tokens, req, res) => {
 	const status = tokens.status(req, res);
 	const responseTime = tokens['response-time'](req, res);
 
+	// Get the error message from res.locals if it exists
+	const errorMessage = res.locals.errorMessage
+		? `\nError: ${res.locals.errorMessage}`
+		: '';
+
+	// Construct the log message
 	const logMessage = `Timestamp: ${timestamp} | Method: ${method} | URL: ${url} | Status: ${status} | Response Time: ${responseTime} ms`;
 
 	if (res.statusCode >= 400) {
 		// Write the log message to the file stream
-		logStream.write(logMessage + '\n');
+		logStream.write(logMessage + errorMessage + '\n');
 
 		return console.log(chalk.redBright.bold(logMessage));
 	} else {

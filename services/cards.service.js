@@ -1,5 +1,5 @@
 const config = require('config');
-const cardsServiceMongo = require('../mongoDB/cards/cards.commands');
+const cardsServiceMongo = require('../models/mongoDB/cards/cards.commands');
 const dbOption = config.get('dbOption');
 
 const createCard = (cardToSave) => {

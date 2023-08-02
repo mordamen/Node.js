@@ -1,16 +1,21 @@
-const authMiddleware = require('../middleware/authMiddleware');
-const usersService = require('../models/services/users.service');
+const usersService = require('../services/users.service');
+const normalizeUser = require('../models/mongoDB/users/helpers/normalize_user');
+const userValidationService = require('../services/validation_users.service');
+const hashService = require('../services/hash.service');
+const handleError = require('../utilities/errorHandler');
 
 // REGISTER NEW USER
 const registerUser = async (req, res) => {
 	try {
-		let normalUser = await normalizeUser(req.body);
-		await userValidationService.registerUserValidation(normalUser);
-		normalUser.password = await hashService.generateHash(normalUser.password);
-		const dataFromDB = await usersService.registerUser(normalUser);
+		let normalizedUser = await normalizeUser(req.body);
+		await userValidationService.registerUserValidation(normalizedUser);
+		normalizedUser.password = await hashService.generateHash(
+			normalizedUser.password
+		);
+		const dataFromDB = await usersService.registerUser(normalizedUser);
 		res.json(dataFromDB);
-	} catch (err) {
-		handleError(res, err.message, 404);
+	} catch (error) {
+		handleError(res, 404, error.message);
 	}
 };
 
@@ -33,8 +38,8 @@ const loginUser = async (req, res) => {
 			});
 			res.json({ msg: 'done!', token });
 		}
-	} catch (err) {
-		handleError(res, err.message, 404);
+	} catch (error) {
+		handleError(res, error.message, 404);
 	}
 };
 
@@ -43,8 +48,8 @@ const getAllUsers = async (req, res) => {
 	try {
 		const dataFromDB = await usersService.getAllUsers();
 		res.json(dataFromDB);
-	} catch (err) {
-		handleError(res, err.message, 400);
+	} catch (error) {
+		handleError(res, error.message, 400);
 	}
 };
 
@@ -58,8 +63,8 @@ const getUser = async (req, res) => {
 		} else {
 			handleError(res, 'Undefind user', 404);
 		}
-	} catch (err) {
-		handleError(res, err.message, 400);
+	} catch (error) {
+		handleError(res, error.message, 400);
 	}
 };
 
@@ -75,8 +80,8 @@ const editUser = async (req, res) => {
 		} else {
 			handleError(res, 'Undefind user', 404);
 		}
-	} catch (err) {
-		handleError(res, err.message, 400);
+	} catch (error) {
+		handleError(res, error.message, 400);
 	}
 };
 
@@ -87,8 +92,8 @@ const changeAccountType = async (req, res) => {
 		await userValidationService.userIdValidation(id);
 		await usersService.updateBizUser(id);
 		res.json({ msg: 'done' });
-	} catch (err) {
-		handleError(res, err.message, 400);
+	} catch (error) {
+		handleError(res, error.message, 400);
 	}
 };
 
@@ -100,8 +105,8 @@ const deleteUser = async (req, res) => {
 		res.json({
 			msg: `user - ${dataFromDb.name.first} ${dataFromDb.name.last} deleted`,
 		});
-	} catch (err) {
-		handleError(res, err.message, 400);
+	} catch (error) {
+		handleError(res, error.message, 400);
 	}
 };
 
