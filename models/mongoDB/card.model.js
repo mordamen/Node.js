@@ -9,28 +9,43 @@ const {
 const cardSchema = new mongoose.Schema({
 	title: DEFAULT_STRING_SCHEMA_REQUIRED,
 	subTitle: DEFAULT_STRING_SCHEMA_REQUIRED,
-	description: { ...DEFAULT_STRING_SCHEMA_REQUIRED, maxLength: 1024 },
+	description: {
+		...DEFAULT_STRING_SCHEMA_REQUIRED,
+		maxLength: [1024, 'Description must be at most 1024 characters long'],
+	},
 	phone: {
 		type: String,
-		required: true,
-		match: RegExp(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/),
+		required: [true, 'Phone number is required'],
+		match: [
+			RegExp(/0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/),
+			'Invalid phone number format',
+		],
 	},
 	email: {
 		type: String,
-		require: true,
-		match: RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/),
+		required: [true, 'Email is required'],
+		match: [
+			RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/),
+			'Invalid email format',
+		],
 		lowercase: true,
 		trim: true,
-		unique: true,
+		unique: [true, 'Email already exists'],
 	},
-	web: URL,
+	web: {
+		type: String,
+		match: [
+			URL,
+			'Invalid URL format. URL should start with "http://" or "https://"',
+		],
+	},
 	image: Image,
 	address: Address,
 	bizNumber: {
 		type: Number,
-		minLength: 7,
-		maxLength: 7,
-		required: true,
+		minLength: [7, 'Business number must be exactly 7 digits long'],
+		maxLength: [7, 'Business number must be exactly 7 digits long'],
+		required: [true, 'Business number is required'],
 		trim: true,
 	},
 	likes: [String],

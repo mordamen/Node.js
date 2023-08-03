@@ -4,9 +4,13 @@ const chalk = require('chalk');
 const handleError = (res, status, message = 'Internal Server Error') => {
 	res.locals.errorMessage = message;
 
-	console.error(message); // Optionally log the error message to the console
+	if (res.status(status) >= 400) {
+		console.log(chalk.redBright.bold(message));
+	} else {
+		console.log(chalk.greenBright.bold(message));
+	}
 
-	return res.status(status).json({ error: message });
+	return res.status(status).json({ error: message, status: status });
 };
 
 module.exports = handleError;

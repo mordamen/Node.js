@@ -1,7 +1,8 @@
-const User = require("../user.model");
+const User = require('../user.model');
 
 const registerUser = (userData) => {
 	const user = new User(userData);
+	console.log(user);
 	return user.save();
 };
 
@@ -24,7 +25,7 @@ const updateUser = (id, userToUpdate) => {
 const changeBusinessStatusById = (id) => {
 	return User.findByIdAndUpdate(
 		id,
-		[{ $set: { isBusiness: { $not: "$isBusiness" } } }],
+		[{ $set: { isBusiness: { $not: '$isBusiness' } } }],
 		{ new: true }
 	);
 };

@@ -1,0 +1,51 @@
+Timestamp: Wed, 02 Aug 2023 15:30:08 GMT | Method: POST | URL: /api/ | Status: 404 | Response Time: 16.985 ms
+Timestamp: Wed, 02 Aug 2023 18:16:43 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 21.413 ms
+Timestamp: Wed, 02 Aug 2023 18:20:37 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 15.543 ms
+Timestamp: Wed, 02 Aug 2023 18:31:31 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 19.900 ms 
+
+Timestamp: Wed, 02 Aug 2023 18:37:23 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 26.065 ms
+
+Timestamp: Wed, 02 Aug 2023 18:48:19 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 2.716 ms
+
+Timestamp: Wed, 02 Aug 2023 18:48:51 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 15.643 ms
+Timestamp: Wed, 02 Aug 2023 18:58:06 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 21.479 ms | Error: "phone" with value "String" fails to match the required pattern: /0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/
+
+Timestamp: Wed, 02 Aug 2023 18:59:13 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 16.928 ms
+Error: "phone" with value "12" fails to match the required pattern: /0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/
+Timestamp: Wed, 02 Aug 2023 19:05:53 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 19.081 ms
+Error: "phone" with value "123456789" fails to match the required pattern: /0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/
+Timestamp: Wed, 02 Aug 2023 19:06:23 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 1.289 ms
+Error: "phone" with value "1234567890" fails to match the required pattern: /0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/
+Timestamp: Wed, 02 Aug 2023 19:07:42 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 1.502 ms
+Error: "email" with value "String" fails to match the required pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+Timestamp: Wed, 02 Aug 2023 19:07:57 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 1.600 ms
+Error: "password" must be a string
+Timestamp: Wed, 02 Aug 2023 19:08:13 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 2.124 ms
+Timestamp: Wed, 02 Aug 2023 19:09:23 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 1.259 ms
+Timestamp: Wed, 02 Aug 2023 19:17:02 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 21.187 ms
+Timestamp: Wed, 02 Aug 2023 19:18:36 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 17.056 ms
+Timestamp: Thu, 03 Aug 2023 04:57:22 GMT | Method: POST | URL: /api/users/login | Status: 404 | Response Time: 37.611 ms
+Error: Invaild email or password
+Timestamp: Thu, 03 Aug 2023 06:13:42 GMT | Method: POST | URL: /api/users/login | Status: 404 | Response Time: 34.281 ms
+Error: Invaild email or password
+Timestamp: Thu, 03 Aug 2023 06:14:26 GMT | Method: POST | URL: /api/users/login | Status: 404 | Response Time: 21.491 ms
+Error: Invaild email or password
+Timestamp: Thu, 03 Aug 2023 06:16:29 GMT | Method: POST | URL: /api/users/login | Status: 404 | Response Time: 27.515 ms
+Error: Invaild email or password
+Timestamp: Thu, 03 Aug 2023 08:49:03 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 76.504 ms
+Error: "phone" with value "1234567" fails to match the required pattern: /0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}/
+Timestamp: Thu, 03 Aug 2023 08:49:16 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 2.643 ms
+Error: "password" with value "something" fails to match the required pattern: /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+Timestamp: Thu, 03 Aug 2023 08:49:25 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 4.683 ms
+Error: "address.houseNumber" must be a number
+Timestamp: Thu, 03 Aug 2023 08:49:35 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 3.441 ms
+Error: "isBusinessAccount" is required
+Timestamp: Thu, 03 Aug 2023 08:52:57 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 96.855 ms
+Error: E11000 duplicate key error collection: nodejs_project.users index: email_1 dup key: { email: "test@gmail.com" }
+Timestamp: Thu, 03 Aug 2023 08:53:52 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 6.726 ms
+Timestamp: Thu, 03 Aug 2023 08:55:09 GMT | Method: POST | URL: /api/users | Status: 404 | Response Time: 1.027 ms
+Error: "isBusinessAccount" is required
+Timestamp: Thu, 03 Aug 2023 08:56:23 GMT | Method: POST | URL: /api/users | Status: 400 | Response Time: 0.655 ms
+Timestamp: Thu, 03 Aug 2023 08:59:21 GMT | Method: POST | URL: /api/login | Status: 404 | Response Time: 0.814 ms
+Timestamp: Thu, 03 Aug 2023 09:00:39 GMT | Method: POST | URL: /api/users/login | Status: 404 | Response Time: 100.201 ms
+Error: tokenService is not defined

@@ -1,7 +1,8 @@
 const usersService = require('../services/users.service');
-const normalizeUser = require('../models/mongoDB/users/helpers/normalize_user');
+const tokenService = require('../services/token.service');
 const userValidationService = require('../services/validation_users.service');
 const hashService = require('../services/hash.service');
+const normalizeUser = require('../models/mongoDB/users/helpers/normalize_user');
 const handleError = require('../utilities/errorHandler');
 
 // REGISTER NEW USER
@@ -36,10 +37,10 @@ const loginUser = async (req, res) => {
 				isBiz: dataFromDB.isBiz,
 				_id: dataFromDB._id,
 			});
-			res.json({ msg: 'done!', token });
+			res.json({ msg: 'Login Successful!', token });
 		}
 	} catch (error) {
-		handleError(res, error.message, 404);
+		handleError(res, 404, error.message);
 	}
 };
 
@@ -49,7 +50,7 @@ const getAllUsers = async (req, res) => {
 		const dataFromDB = await usersService.getAllUsers();
 		res.json(dataFromDB);
 	} catch (error) {
-		handleError(res, error.message, 400);
+		handleError(res, 400, error.message);
 	}
 };
 
@@ -61,10 +62,10 @@ const getUser = async (req, res) => {
 		if (dataFromDB) {
 			res.json(dataFromDB);
 		} else {
-			handleError(res, 'Undefind user', 404);
+			handleError(res, 404, 'Undefind user');
 		}
 	} catch (error) {
-		handleError(res, error.message, 400);
+		handleError(res, 400, error.message);
 	}
 };
 
@@ -81,7 +82,7 @@ const editUser = async (req, res) => {
 			handleError(res, 'Undefind user', 404);
 		}
 	} catch (error) {
-		handleError(res, error.message, 400);
+		handleError(res, 400, error.message);
 	}
 };
 
@@ -93,7 +94,7 @@ const changeAccountType = async (req, res) => {
 		await usersService.updateBizUser(id);
 		res.json({ msg: 'done' });
 	} catch (error) {
-		handleError(res, error.message, 400);
+		handleError(res, 400, error.message);
 	}
 };
 
@@ -106,7 +107,7 @@ const deleteUser = async (req, res) => {
 			msg: `user - ${dataFromDb.name.first} ${dataFromDb.name.last} deleted`,
 		});
 	} catch (error) {
-		handleError(res, error.message, 400);
+		handleError(res, 400, error.message);
 	}
 };
 
