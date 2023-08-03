@@ -2,14 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/users.controller');
 const authMiddleware = require('../middleware/auth.middleware');
-
-// router.post('/', async (req, res) => {
-// 	try {
-// 		res.json(res.body);
-// 	} catch (err) {
-// 		handleError(res, err.message, 404);
-// 	}
-// });
+const permissionsMiddleware = require('../middleware/permissions.middleware');
 
 // REGISTER NEW USER
 // ROUTE: /users | METHOD: POST | AUTHORIZATION: All | RETURN: Registered User | OTHER: Needs unique email
@@ -24,7 +17,8 @@ router.post('/login', userController.loginUser);
 router.get(
 	'/',
 	authMiddleware,
-	/* permissionsMiddleware(true, false, false),*/ userController.getAllUsers
+	permissionsMiddleware(true, false, false),
+	userController.getAllUsers
 );
 
 //Get specific user
@@ -32,7 +26,8 @@ router.get(
 router.get(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(true, false, true),*/ userController.getUser
+	permissionsMiddleware(true, false, true),
+	userController.getUser
 );
 
 //Edit user
@@ -40,7 +35,8 @@ router.get(
 router.put(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(false, false, true),*/ userController.editUser
+	permissionsMiddleware(false, false, true),
+	userController.editUser
 );
 
 //Change account status - Business Account
@@ -48,7 +44,8 @@ router.put(
 router.patch(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(false, false, true), */ userController.changeAccountType
+	permissionsMiddleware(false, false, true),
+	userController.changeAccountType
 );
 
 //Delete User
@@ -56,7 +53,8 @@ router.patch(
 router.delete(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(true, false, true),*/ userController.deleteUser
+	permissionsMiddleware(true, false, true),
+	userController.deleteUser
 );
 
 module.exports = router;

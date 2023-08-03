@@ -3,7 +3,7 @@ const tokenService = require('../services/token.service');
 const userValidationService = require('../services/validation_users.service');
 const hashService = require('../services/hash.service');
 const normalizeUser = require('../models/mongoDB/users/helpers/normalize_user');
-const handleError = require('../utilities/errorHandler');
+const handleError = require('../middleware/errorHandler.middleware');
 
 // REGISTER NEW USER
 const registerUser = async (req, res) => {

@@ -1,5 +1,5 @@
 const { verifyToken } = require('../services/token.service');
-const handleError = require('../utilities/errorHandler');
+const handleError = require('./errorHandler.middleware');
 
 const authMiddleware = async (req, res, next) => {
 	try {

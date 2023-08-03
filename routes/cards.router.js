@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const handleError = require('../utilities/errorHandler');
+const handleError = require('../middleware/errorHandler.middleware');
 const cardController = require('../controllers/cards.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 
