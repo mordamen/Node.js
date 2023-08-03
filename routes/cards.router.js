@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const handleError = require('../middleware/errorHandler.middleware');
 const cardController = require('../controllers/cards.controller');
+const handleError = require('../middleware/errorHandler.middleware');
 const authMiddleware = require('../middleware/auth.middleware');
+const permissionsMiddleware = require('../middleware/permissions.middleware');
 
 // GET ALL CARDS
 // ROUTE: /cards | METHOD: GET | AUTHORIZATION: All | RETURN: All Cards
@@ -20,7 +21,8 @@ router.get('/:id', cardController.getCard);
 router.post(
 	'/',
 	authMiddleware,
-	/* permissionsMiddleware(false, true, false),*/ cardController.createCard
+	permissionsMiddleware(false, true, false),
+	cardController.createCard
 );
 
 // EDIT CARD
@@ -28,7 +30,8 @@ router.post(
 router.put(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(false, false, true),*/ cardController.editCard
+	permissionsMiddleware(false, false, true),
+	cardController.editCard
 );
 
 // FAVORITE(LIKE) A CARD
@@ -40,7 +43,8 @@ router.patch('/:id', authMiddleware, cardController.favoriteCard);
 router.delete(
 	'/:id',
 	authMiddleware,
-	/* permissionsMiddleware(true, false, true),*/ cardController.deleteCard
+	permissionsMiddleware(true, false, true),
+	cardController.deleteCard
 );
 
 // Change Card Number
